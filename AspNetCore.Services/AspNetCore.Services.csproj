@@ -43,5 +43,23 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AspNet.Repository\AspNet.Repository.csproj">
+      <Project>{80c68985-116f-4e7b-89a0-a7b7c7224bc1}</Project>
+      <Name>AspNet.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AspNetCore.Dtos\AspNet.Dtos.csproj">
+      <Project>{f227b7ec-0781-4c02-8cf6-ded287f03b80}</Project>
+      <Name>AspNet.Dtos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AspNetCore.Entitys\AspNet.Entitys.csproj">
+      <Project>{c38468c5-7b55-4e0d-9ce1-c46d5b6e82f5}</Project>
+      <Name>AspNet.Entitys</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AspNetCore.ViewModel\AspNet.ViewModel.csproj">
+      <Project>{a837f9d7-10f1-4e4e-b583-701e6092612c}</Project>
+      <Name>AspNet.ViewModel</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

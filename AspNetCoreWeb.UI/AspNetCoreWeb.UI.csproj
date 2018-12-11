@@ -10,4 +10,11 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AspNetCore.Dtos\AspNet.Dtos.csproj" />
+    <ProjectReference Include="..\AspNetCore.Entitys\AspNet.Entitys.csproj" />
+    <ProjectReference Include="..\AspNetCore.Services\AspNetCore.Services.csproj" />
+    <ProjectReference Include="..\AspNetCore.ViewModel\AspNet.ViewModel.csproj" />
+  </ItemGroup>
+
 </Project>

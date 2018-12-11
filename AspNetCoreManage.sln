@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{A7D4064D-9DE4-493B-A3E2-D07790B82870}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCoreWeb.UI", "AspNetCoreWeb.UI\AspNetCoreWeb.UI.csproj", "{5B5384F8-228C-4EDC-AFB3-FE1301D54EDC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetCoreWeb.UI", "AspNetCoreWeb.UI\AspNetCoreWeb.UI.csproj", "{5B5384F8-228C-4EDC-AFB3-FE1301D54EDC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNet.Core", "AspNet.Core", "{6848D498-AA62-47D6-83CA-F381A5227023}"
 EndProject
@@ -21,7 +21,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetCore.Services", "AspN
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Repository", "AspNet.Repository\AspNet.Repository.csproj", "{80C68985-116F-4E7B-89A0-A7B7C7224BC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Api", "AspNet.Api\AspNet.Api.csproj", "{652957D3-8F2D-4110-8716-CA46C3A1485B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNet.Api", "AspNet.Api\AspNet.Api.csproj", "{652957D3-8F2D-4110-8716-CA46C3A1485B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNet.Common", "AspNet.Common\AspNet.Common.csproj", "{C6864732-2E60-4D00-88FF-A7763878A298}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{652957D3-8F2D-4110-8716-CA46C3A1485B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{652957D3-8F2D-4110-8716-CA46C3A1485B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{652957D3-8F2D-4110-8716-CA46C3A1485B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6864732-2E60-4D00-88FF-A7763878A298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6864732-2E60-4D00-88FF-A7763878A298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6864732-2E60-4D00-88FF-A7763878A298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6864732-2E60-4D00-88FF-A7763878A298}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -69,6 +75,7 @@ Global
 		{79B98F1C-8355-4C8E-9D47-D521DEF56E85} = {183FA5A0-650F-481A-A889-02574DFD99EA}
 		{80C68985-116F-4E7B-89A0-A7B7C7224BC1} = {6848D498-AA62-47D6-83CA-F381A5227023}
 		{652957D3-8F2D-4110-8716-CA46C3A1485B} = {6848D498-AA62-47D6-83CA-F381A5227023}
+		{C6864732-2E60-4D00-88FF-A7763878A298} = {6848D498-AA62-47D6-83CA-F381A5227023}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37766565-907A-4B1E-B228-3F7EACA4190D}
