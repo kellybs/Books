@@ -27,7 +27,7 @@ namespace AspNet.Repository
         {
             try
             {
-                this.MaterDatabase = DatabaseFactory.CreateDatabase(DbConnectionKeys.DB_Main);
+                this.MaterDatabase = DatabaseFactory.CreateDatabase(AppSetting.GetConfig("ConnectionStrings:SqlServerConnection"));
 
             }
             catch (Exception ex)

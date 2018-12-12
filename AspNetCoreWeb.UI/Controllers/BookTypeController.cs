@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AspNetCore.Services.Abstracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -9,10 +10,18 @@ namespace AspNetCoreWeb.UI.Controllers
 {
     public class BookTypeController : Controller
     {
-        // GET: BookType
+
+        private readonly IBookTypeServices bookTypeServices;
+
+        public BookTypeController(IBookTypeServices books)
+        {
+            bookTypeServices = books;
+        }
+
         public ActionResult Index()
         {
-            return View();
+            var list = bookTypeServices.Query();
+            return View(list);
         }
 
         // GET: BookType/Details/5
