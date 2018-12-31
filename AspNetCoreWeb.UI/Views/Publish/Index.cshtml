@@ -1,0 +1,34 @@
+﻿@model List<AspNetCore.Entitys.PublishHouse>
+<a class="btn btn-success mt-5" style="margin:10px;" asp-controller="Publish" asp-action="Create">新增</a>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>编号</th>
+            <th>分类名称</th>
+            <th>是否热门</th>
+            <th>管理</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+
+            if (Model != null && Model.Count() > 0)
+            {
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.PublishHouseID</td>
+                        <td>@item.PublishName</td>
+                        <td>@item.IsRecommend</td>
+
+                        <td>
+                            <a class="btn btn-info" asp-area="" asp-controller="BookType" asp-action="Update" asp-route-id="@item.PublishHouseID">编辑</a>
+                            <a class="btn btn-danger" asp-area="" asp-controller="BookType" asp-action="Delete" asp-route-id="@item.PublishHouseID">删除</a>
+                        </td>
+                    </tr>
+                }
+            }
+        }
+
+    </tbody>
+</table>
