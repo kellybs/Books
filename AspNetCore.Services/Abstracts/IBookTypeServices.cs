@@ -1,15 +1,21 @@
-﻿using AspNetCore.ViewModel;
-using System;
+﻿using AspNetCore.Entitys;
+using AspNetCore.ViewModel;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AspNetCore.Services.Abstracts
 {
     public interface IBookTypeServices
     {
         BookTypeUI Query();
-        
+
+        List<BookTypes> GetParentList();
+
+        ResultInfo Create(BookTypeModel model);
+
+        BookTypes GetItem(int id);
+
+        List<BookTypes> SearchAll();
+
+        List<BookTypes> GetListByParentID(int parentId);
     }
 }

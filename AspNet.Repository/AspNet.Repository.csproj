@@ -101,19 +101,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Abstracts\IBookTypeRepository.cs" />
-    <Compile Include="AppSetting.cs" />
+    <Compile Include="Abs\IBookRepository.cs" />
+    <Compile Include="Abs\IBookTypeRepository.cs" />
+    <Compile Include="Abs\IPublishHouseRepository.cs" />
     <Compile Include="DapperRepository.cs" />
     <Compile Include="DataBaseType.cs" />
-    <Compile Include="DbConnectionKeys.cs" />
     <Compile Include="DbConnectionProvider.cs" />
+    <Compile Include="Impl\BookRepository.cs" />
     <Compile Include="Impl\BookTypeRepository.cs" />
+    <Compile Include="Impl\PublishHouseRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AspNet.Common\AspNet.Common.csproj">
+      <Project>{6C1849EB-0856-4135-BED6-2EBD4C96DDC6}</Project>
+      <Name>AspNet.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AspNetCore.Dtos\AspNet.Dtos.csproj">
       <Project>{f227b7ec-0781-4c02-8cf6-ded287f03b80}</Project>
       <Name>AspNet.Dtos</Name>
@@ -121,6 +128,10 @@
     <ProjectReference Include="..\AspNetCore.Entitys\AspNet.Entitys.csproj">
       <Project>{c38468c5-7b55-4e0d-9ce1-c46d5b6e82f5}</Project>
       <Name>AspNet.Entitys</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AspNetCore.ViewModel\AspNet.ViewModel.csproj">
+      <Project>{A837F9D7-10F1-4E4E-B583-701E6092612C}</Project>
+      <Name>AspNet.ViewModel</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

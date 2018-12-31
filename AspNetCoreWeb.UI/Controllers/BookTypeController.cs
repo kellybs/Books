@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AspNetCore.Services.Abstracts;
+using AspNetCore.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
 namespace AspNetCoreWeb.UI.Controllers
 {
@@ -13,9 +15,12 @@ namespace AspNetCoreWeb.UI.Controllers
 
         private readonly IBookTypeServices bookTypeServices;
 
-        public BookTypeController(IBookTypeServices books)
+        public BookTypeController(IBookTypeServices books, IOptions<DbConn> dbconn)
         {
             bookTypeServices = books;
+            var connection = dbconn.Value;
+
+            string result = connection.SqlServer;
         }
 
         public ActionResult Index()
@@ -33,24 +38,21 @@ namespace AspNetCoreWeb.UI.Controllers
         // GET: BookType/Create
         public ActionResult Create()
         {
-            return View();
+            BookTypeModel model = new BookTypeModel() {
+                Parent=bookTypeServices.GetParentList()
+            };
+            
+            return View(model);
         }
 
         // POST: BookType/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(BookTypeModel model,IFormCollection collection)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            var ri = bookTypeServices.Create(model);
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return Json(ri);
         }
 
         // GET: BookType/Edit/5

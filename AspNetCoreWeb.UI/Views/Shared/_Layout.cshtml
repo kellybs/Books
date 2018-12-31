@@ -31,8 +31,9 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                    <li><a asp-area="" asp-controller="BookType" asp-action="">书籍分类</a></li>
-                    <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>
+                    <li><a asp-area="" asp-controller="BookType" asp-action="">分类维护</a></li>
+                    <li><a asp-area="" asp-controller="Publish" asp-action="">出版社</a></li>
+                    <li><a asp-controller="Book" asp-action="">书籍管理</a></li>
                 </ul>
             </div>
         </div>
@@ -52,6 +53,7 @@
         <script src="~/lib/jquery/dist/jquery.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/module.js" ></script>
     </environment>
     <environment exclude="Development">
         <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"

@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Dapper.Contrib.Extensions;
+using System;
 
 namespace AspNetCore.Entitys
 {
@@ -12,6 +9,7 @@ namespace AspNetCore.Entitys
     [Serializable]
     public partial class BookTypes
     {
+        [Key]
         /// <summary>
         /// 主键 自增
         /// </summary>

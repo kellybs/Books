@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookQueryInfo.cs" />
+    <Compile Include="BookTypeName.cs" />
     <Compile Include="BookTypeUI.cs" />
+    <Compile Include="PageList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AspNetCore.Entitys\AspNet.Entitys.csproj">

@@ -1,16 +1,20 @@
 ﻿using AspNetCore.Entitys;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AspNetCore.ViewModel
 {
     public class BookTypeUI
     {
-        public List<BookTypes> BookList { get; set; }
+        public List<BookTypeName> BookList { get; set; }
 
-        public List<BookTypes> ParentBooks { get; set; }
+        public List<BookTypeName> ParentBooks { get; set; }
+    }
+
+
+    public class BookTypeModel
+    {
+        public BookTypes BookType { get; set; }
+
+        public IEnumerable<BookTypes> Parent { get; set; }
     }
 }

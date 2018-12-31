@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -27,6 +28,7 @@ namespace AspNet.Repository
             }
             throw new InvalidOperationException("Can not create DbConnection");
         }
+
 
         public void SqlInsertBatch(DataTable data, SqlRowsCopiedEventHandler onSqlRowsCopied = null, IDbTransaction transaction = null)
         {

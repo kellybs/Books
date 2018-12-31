@@ -6,12 +6,16 @@
 
   <ItemGroup>
     <PackageReference Include="Autofac" Version="4.8.1" />
+    <PackageReference Include="Autofac.Configuration" Version="4.1.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.3.1" />
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.5.1" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AspNet.Common\AspNet.Common.csproj" />
     <ProjectReference Include="..\AspNetCore.Dtos\AspNet.Dtos.csproj" />
     <ProjectReference Include="..\AspNetCore.Entitys\AspNet.Entitys.csproj" />
     <ProjectReference Include="..\AspNetCore.Services\AspNetCore.Services.csproj" />
