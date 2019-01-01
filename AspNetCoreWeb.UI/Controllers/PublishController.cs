@@ -36,5 +36,29 @@ namespace AspNetCoreWeb.UI.Controllers
 
             return Json(ri);
         }
+
+        public IActionResult Edit(int id)
+        {
+            var model = publish.GetItem(id);
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(PublishHouse model, IFormCollection collection)
+        {
+            var ri = publish.Update(model);
+
+            return Json(ri);
+        }
+
+        [HttpPost]
+    
+        public ActionResult Delete(int id)
+        {
+            var ri = publish.Delete(id);
+
+            return Json(ri);
+        }
     }
 }

@@ -10,6 +10,7 @@ namespace AspNetCore.Entitys
     [Serializable]
     public partial class Books
     {
+        [Key]
         /// <summary>
         /// 主键
         /// </summary>
@@ -42,14 +43,25 @@ namespace AspNetCore.Entitys
             get;
             set;
         }
+
         /// <summary>
-        /// 分类
+        /// 父类
         /// </summary>
-        public int BookTypeId
+        public int ParentType
         {
             get;
             set;
         }
+
+        /// <summary>
+        /// 子类
+        /// </summary>
+        public int SubType
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// 原价
         /// </summary>

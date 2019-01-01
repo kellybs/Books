@@ -9,23 +9,20 @@ namespace AspNetCore.Dtos
     public class BookQuery:PageQuery
     {
         /// <summary>
-        /// 书籍分类
+        /// 父类
         /// </summary>
-        public int BookTypeId { get; set; }
+        public int ParentType { get; set; }
+
+        /// <summary>
+        /// 子类
+        /// </summary>
+        public int SubType { get; set; }
 
         /// <summary>
         /// 出版社
         /// </summary>
         public int PublishHouseId { get; set; }
 
-        /// <summary>
-        /// 推荐
-        /// </summary>
-        public bool Recommend { get; set; }
-
-        /// <summary>
-        /// 推荐
-        /// </summary>
-        public bool Hot { get; set; }
+       
     }
 }

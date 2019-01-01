@@ -11,8 +11,14 @@ namespace AspNet.Repository.Abs
     {
         long Create(PublishHouse model);
 
+        bool Update(PublishHouse model);
+
+        bool Delete(PublishHouse model);
+
         IEnumerable<PublishHouse> GetList();
 
         PublishHouse GetItem(int id);
+
+        PublishHouse Exists(string name);
     }
 }

@@ -1,7 +1,11 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using log4net;
+using log4net.Config;
+using log4net.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -19,16 +23,25 @@ namespace AspNetCoreWeb.UI
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .AddEnvironmentVariables();
             this.Configuration = builder.Build();
+
+            //log4net
+            repository = LogManager.CreateRepository("NETCoreRepository");
+                         //指定配置文件
+            XmlConfigurator.Configure(repository, new FileInfo("log4net.config"));
         }
 
       
 
         public IConfigurationRoot Configuration { get; private set; }
         public IContainer ApplicationContainer { get; private set; }
+        public static ILoggerRepository repository { get; set; }
+
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddConsole(this.Configuration.GetSection("Logging"));
-            loggerFactory.AddDebug();
+            //loggerFactory.AddConsole(this.Configuration.GetSection("Logging"));
+            //loggerFactory.AddDebug();
+
+            
             //app.UseMvc();
 
             if (env.IsDevelopment())

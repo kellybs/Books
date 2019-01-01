@@ -15,5 +15,10 @@ namespace AspNetCore.Services.Abstracts
         PublishHouse GetItem(int id);
 
         ResultInfo Create(PublishHouse model);
+
+
+        ResultInfo Update(PublishHouse model);
+
+        ResultInfo Delete(int id);
     }
 }

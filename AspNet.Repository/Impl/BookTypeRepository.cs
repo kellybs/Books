@@ -5,30 +5,37 @@ using Dapper;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using Dapper.Contrib.Extensions;
 
 namespace AspNet.Repository.Impl
 {
     public class BookTypeRepository:IBookTypeRepository
-    {      
-       
-
-        public BookTypeRepository()          
-        {
-        }
-
-     
+    {  
 
         public int Create(BookTypes model)
         {
-
-
             using (IDbConnection conn = DataBaseConfig.GetSqlConnection(null))
             {
                 string sql = "insert into BookTypes(TypeName,ParentId) values(@typename,@ParentId)";
                 return conn.Execute(sql, model);
             }
+        }
 
-                
+        public bool Delete(BookTypes model)
+        {
+            using (IDbConnection conn = DataBaseConfig.GetSqlConnection(null))
+            {
+                return conn.Delete(model);
+            }
+        }
+
+        public List<BookTypes> GetChildList(int parentId)
+        {
+            const string sql = "select BookTypeId,TypeName,ParentId  from booktypes where ParentId=@ParentId ";
+            using (IDbConnection conn = DataBaseConfig.GetSqlConnection(null))
+            {                
+                return conn.Query<BookTypes>(sql, new { ParentId = parentId }).ToList();
+            }
         }
 
         public BookTypes GetItem(int id)

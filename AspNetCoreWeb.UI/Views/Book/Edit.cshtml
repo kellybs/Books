@@ -1,14 +1,14 @@
 ﻿
 @model AspNetCore.ViewModel.BookUI
-@{ 
+@{
     var selectItemList = new List<SelectListItem>() {
-                new SelectListItem(){Value="0",Text="请选择",Selected=true}
-            };
+new SelectListItem(){Value="0",Text="请选择",Selected=true}
+};
 }
 
 <div class="row orderForm">
-    <form asp-controller="Book" asp-action="Create" method="post" class="form-horizontal" role="form" name="formSave" id="formSave">
-        <h3 class="col-md-offset-2">新增图书</h3>
+    <form asp-controller="Book" asp-action="Edit" method="post" class="form-horizontal" role="form" name="formSave" id="formSave">
+        <h3 class="col-md-offset-2">编辑图书</h3>
         <div class="form-group">
             <label class="col-md-2 control-label">选择父类</label>
             <div class="col-md-4">
@@ -42,7 +42,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">作者</label>
             <div class="col-md-6">
-                <input asp-for="Book.Author" class="form-control" placeholder="请输入作者" maxlength="15" />
+                <input asp-for="Book.Author" class="form-control" placeholder="请输入作者" />
             </div>
         </div>
         <div class="form-group">
@@ -71,8 +71,8 @@
         </div>
         <div class="form-group">
             <label class="col-md-2 control-label">简介</label>
-            <div class="col-md-6">               
-                <textarea asp-for="Book.Summary"  class="form-control" placeholder="请输入简介" rows="5"></textarea>
+            <div class="col-md-6">
+                <textarea asp-for="Book.Summary" class="form-control" placeholder="请输入简介" rows="5"></textarea>
             </div>
         </div>
         <div class="form-group">
@@ -84,7 +84,7 @@
         <div class="form-group">
             <label class="col-md-2 control-label">是否热门</label>
             <div class="col-md-6">
-                <input asp-for="Book.IsHot"  />
+                <input asp-for="Book.IsHot" />
             </div>
         </div>
         <div class="form-group">
@@ -93,15 +93,30 @@
                 <input class="btn btn-success" type="button" value="保存" onclick="bookModule.saveResult(this)" />
             </div>
         </div>
+        @Html.HiddenFor(t=>t.Book.BookId)
     </form>
 </div>
 
-<script>
+@section scripts{
+
+    <script>
+
+    $(function () {
+        var pid ='@Model.Book.ParentType';
+        $("#Book_BookTypeId").val(pid);
+
+        selectSubType();
+
+        setTimeout(function () {
+            $("#Book_SubType").val('@Model.Book.SubType');
+        }, 100);
+        
+    })
     function selectSubType() {
         var parent = $("#Book_ParentType").val();
         $("#Book_SubType").empty();
         if (parent == 0 || parent=="") {
-            
+
             return;
         }
         $.ajax({
@@ -116,16 +131,17 @@
                 alert("删除记录时出错了");
             },
             success: function (data) {
-                $("#Book_SubType").append("<option value='0'>请选择</option>");
+
                 if (data) {
-                    
+                    $("#Book_SubType").append("<option value='0'>请选择</option>");
                     for (var i = 0; i < data.length; i++) {
                         $("#Book_SubType").append("<option value='" + data[i].bookTypeId + "'>" + data[i].typeName + "</option>");
                     }
-                    
+
                 }
-               
+
             }
         });
     }
-</script>
+    </script>
+}

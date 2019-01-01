@@ -1,5 +1,8 @@
 ﻿// 加载这个文件前，需要先加载jquery.js
 var bookModule = {
+
+    flag:0,
+
     //ajax 分页 ，替换原来的
     ajaxPage: function (url, page, className) {
 
@@ -33,19 +36,20 @@ var bookModule = {
 
         var that = e;
 
-        console.log("hahaha")
+        var self = this;
+       
         $.post(url, $('#' + form).serialize(), function (data) {
 
             console.log(data);
 
-            if (data.code == 0) {
+            if (data.code == self.flag) {
 
                 $(that).addClass("buttonEnable");
 
               
                 setTimeout(function () {
                     window.location.href = data.url;
-                }, 1000);
+                }, 100);
 
               
 
@@ -56,6 +60,35 @@ var bookModule = {
             }
 
         });
+    },
+
+    deleteItem: function (url, id, e) {
+        if (confirm("确认要删除?")) {
+
+            var self = this;
+
+            $.ajax({
+                type: "post",
+
+                url: url,
+                data: { id: id },
+                timeout: 30000, //超时时间：30秒
+
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    alert("删除记录时出错了");
+                },
+                success: function (data) {
+                    if (data.code == self.flag) {
+                        $(e).parent().parent().fadeOut(500, function () {
+                            $(e).parent().parent().remove();
+                        })
+                    }
+                    else {
+                        alert(data.msg);
+                    }
+                }
+            });
+        }
     }
 
 };

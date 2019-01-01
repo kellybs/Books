@@ -16,6 +16,8 @@ namespace AspNetCoreWeb.UI
     {
         public static void Main(string[] args)
         {
+           
+
             var host = new WebHostBuilder()
                .UseKestrel()
                .ConfigureServices(services => services.AddAutofac())

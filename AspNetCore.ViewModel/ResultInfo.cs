@@ -8,6 +8,11 @@ namespace AspNetCore.ViewModel
 {
     public class ResultInfo
     {
+        public ResultInfo()
+        {
+            this.Code = -1;
+        }
+
         /// <summary>
         /// 操作是否成功 0 成功 其它值失败
         /// </summary>

@@ -5,7 +5,6 @@
         <tr>
             <th>书名</th>
             <th>作者</th>
-         
             <th>管理</th>
         </tr>
     </thead>
@@ -18,8 +17,8 @@
                 <td>@item.Author</td>
 
                 <td>
-                    <a class="btn btn-info" asp-area="" asp-controller="Book" asp-action="Update" asp-route-id="@item.BookId">编辑</a>
-                    <a class="btn btn-danger" asp-area="" asp-controller="Book" asp-action="Delete" asp-route-id="@item.BookId">删除</a>
+                    <a class="btn btn-info" asp-area="" asp-controller="Book" asp-action="Edit" asp-route-id="@item.BookId">编辑</a>
+                    <a class="btn btn-danger" onclick="bookModule.deleteItem('/Book/Delete','@item.BookId',this)" href="#">删除</a>
                 </td>
             </tr>
         }
@@ -27,3 +26,34 @@
 </table>
 
 
+<div class="page">
+    <ul id="page"></ul>
+</div>
+
+@section scripts{
+
+    <script>
+
+    $(function () {
+        var currentPage = @Model.PageIndex;
+        var totalPages = @Model.TotalPageNum;
+        var url="@Model.Href";
+		$("#page").bootstrapPaginator({
+			bootstrapMajorVersion: 3, //对应的bootstrap版本
+			currentPage: currentPage, //当前页数
+			numberOfPages: @Model.PageSize, //每次显示页数
+			totalPages: totalPages, //总页数
+			shouldShowPage: true, //是否显示该按钮
+			useBootstrapTooltip: true,
+			onPageClicked: function(event, originalEvent, type, page) {              
+                window.location.href = url + "&pageIndex=" + page;
+			}
+		});
+
+
+
+    })
+
+    </script>
+    <script src="~/js/bootstrap-paginator.js"></script>
+}

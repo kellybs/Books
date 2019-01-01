@@ -11,12 +11,8 @@ namespace AspNetCore.ViewModel
         public string PublishName { get; set; }
     }
 
-    public class BookAdd {
-
-        /// <summary>
-        /// 书籍分类子类
-        /// </summary>
-        public int SubTypes { get; set; }
+    public class BookUI {
+     
 
         public Books Book { get; set; }
 

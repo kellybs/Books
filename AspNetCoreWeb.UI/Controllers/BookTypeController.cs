@@ -29,11 +29,7 @@ namespace AspNetCoreWeb.UI.Controllers
             return View(list);
         }
 
-        // GET: BookType/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+    
 
         // GET: BookType/Create
         public ActionResult Create()
@@ -55,50 +51,15 @@ namespace AspNetCoreWeb.UI.Controllers
             return Json(ri);
         }
 
-        // GET: BookType/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: BookType/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: BookType/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
+      
         // POST: BookType/Delete/5
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        
+        public ActionResult Delete(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
+            var ri = bookTypeServices.Delete(id);
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return Json(ri);
         }
     }
 }

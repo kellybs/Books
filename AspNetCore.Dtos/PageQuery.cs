@@ -16,7 +16,7 @@ namespace AspNetCore.Dtos
         /// <summary>
         /// 页面分页总页数
         /// </summary>
-        private int _pageSize = 4;
+        private int _pageSize = 10;
 
         /// <summary>
         /// 当前页索引

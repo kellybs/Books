@@ -176,6 +176,8 @@ namespace AspNetCore.ViewModel
         {
             return List.GetEnumerator();
         }
+
+        public string Href { get; set; }
     }
 
     public class PageList<T> : PageList<T, object> where T : class

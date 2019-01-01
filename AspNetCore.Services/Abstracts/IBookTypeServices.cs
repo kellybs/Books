@@ -17,5 +17,7 @@ namespace AspNetCore.Services.Abstracts
         List<BookTypes> SearchAll();
 
         List<BookTypes> GetListByParentID(int parentId);
+
+        ResultInfo Delete(int id);
     }
 }

@@ -3,9 +3,11 @@ using System;
 
 namespace AspNetCore.Entitys
 {
+
     /// <summary>
-    /// 
+    /// 书籍分类
     /// </summary>
+    [Table("BookTypes")]
     [Serializable]
     public partial class BookTypes
     {

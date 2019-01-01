@@ -9,18 +9,15 @@
             <th>管理</th>
         </tr>
     </thead>
-    <tbody>
-      
+    <tbody>      
         @foreach (var item in Model.BookList)
         {
             <tr>
                 <td>@item.BookTypeId</td>
                 <td>@item.TypeName</td>
                 <td>@item.ParentName</td>
-
                 <td>
-                    <a class="btn btn-info" asp-area="" asp-controller="BookType" asp-action="Update" asp-route-id="@item.BookTypeId">编辑</a>
-                    <a class="btn btn-danger" asp-area="" asp-controller="BookType" asp-action="Delete" asp-route-id="@item.BookTypeId">删除</a>
+                    <a class="btn btn-danger" onclick="bookModule.deleteItem('/BookType/Delete','@item.BookTypeId',this)" href="#">删除</a>
                 </td>
             </tr>
         }

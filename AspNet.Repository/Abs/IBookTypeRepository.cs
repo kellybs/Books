@@ -8,11 +8,15 @@ namespace AspNet.Repository.Abs
     {
         int Create(BookTypes model);
 
+        bool Delete(BookTypes model);
+
         List<BookTypeName> GetList();
 
         List<BookTypes> GetParentList();
 
         List<BookTypes> SearchAll();
+
+        List<BookTypes> GetChildList(int parentId);
 
         BookTypes GetItem(int id);
 

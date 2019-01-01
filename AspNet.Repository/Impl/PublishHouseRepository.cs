@@ -21,6 +21,23 @@ namespace AspNet.Repository.Impl
             }
         }
 
+        public bool Delete(PublishHouse model)
+        {
+            using (IDbConnection conn = DataBaseConfig.GetSqlConnection(null))
+            {
+                return conn.Delete(model);
+            }
+        }
+
+        public PublishHouse Exists(string name)
+        {
+            using (IDbConnection conn = DataBaseConfig.GetSqlConnection(null))
+            {
+                const string sql = "select PublishHouseID,PublishName,IsRecommend from PublishHouse where PublishName=@PublishName";
+                return conn.QueryFirstOrDefault<PublishHouse>(sql, new { PublishName = name });
+            }
+        }
+
         public PublishHouse GetItem(int id)
         {
             using (IDbConnection conn = DataBaseConfig.GetSqlConnection(null))
@@ -36,6 +53,14 @@ namespace AspNet.Repository.Impl
             {
                 const string sql = "select PublishHouseID,PublishName,IsRecommend from PublishHouse  order by PublishHouseID desc";
                 return conn.Query<PublishHouse>(sql);
+            }
+        }
+
+        public bool Update(PublishHouse model)
+        {
+            using (IDbConnection conn = DataBaseConfig.GetSqlConnection(null))
+            {
+                return conn.Update(model);
             }
         }
     }
