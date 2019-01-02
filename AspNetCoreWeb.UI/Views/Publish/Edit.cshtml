@@ -1,0 +1,13 @@
+﻿
+@model AspNetCore.Entitys.PublishHouse
+
+<div class="row orderForm">
+    <form asp-controller="Publish" asp-action="Edit" method="post" class="form-horizontal" role="form" name="formSave" id="formSave">
+        <h3 class="col-md-offset-2">修改出版社</h3>
+
+        @Html.Partial("_Form", Model);
+        @Html.HiddenFor(t => t.PublishHouseID)
+    </form>
+</div>
+
+
