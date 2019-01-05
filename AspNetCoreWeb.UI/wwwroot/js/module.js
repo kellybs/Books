@@ -89,6 +89,40 @@ var bookModule = {
                 }
             });
         }
+    },
+
+    selectSubType: function (bigType, smallType) {
+        var big = "#" + bigType;
+        var small = "#" + smallType;
+        var parent = $(big).val();
+        $(small).empty();
+        if (parent == 0 || parent == "") {
+
+            return;
+        }
+        $.ajax({
+            type: "post",
+
+            url: "/Book/GetSub",
+            data: { id: parent },
+            dataType: "json",
+            timeout: 30000, //超时时间：30秒
+
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                alert("删除记录时出错了");
+            },
+            success: function (data) {
+                $(small).append("<option value='0'>请选择</option>");
+                if (data) {
+
+                    for (var i = 0; i < data.length; i++) {
+                        $(small).append("<option value='" + data[i].bookTypeId + "'>" + data[i].typeName + "</option>");
+                    }
+
+                }
+
+            }
+        });
     }
 
 };

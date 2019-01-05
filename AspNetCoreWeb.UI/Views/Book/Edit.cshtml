@@ -15,7 +15,7 @@ new SelectListItem(){Value="0",Text="请选择",Selected=true}
                 @Html.DropDownListFor(t=>t.Book.ParentType,
                new SelectList(Model.BookType.Select(x=>new { Value=x.BookTypeId,Text=x.TypeName  }), "Value", "Text"),
                "请选择",
-               htmlAttributes: new { @class = "form-control border-input", onchange="selectSubType()" })
+               htmlAttributes: new { @class = "form-control border-input", onchange= "bookModule.selectSubType('Book_ParentType','Book_SubType')" })
             </div>
         </div>
         <div class="form-group">
@@ -102,46 +102,44 @@ new SelectListItem(){Value="0",Text="请选择",Selected=true}
     <script>
 
     $(function () {
-        var pid ='@Model.Book.ParentType';
-        $("#Book_BookTypeId").val(pid);
-
-        selectSubType();
+       
+        bookModule.selectSubType('Book_ParentType', 'Book_SubType');
 
         setTimeout(function () {
             $("#Book_SubType").val('@Model.Book.SubType');
         }, 100);
         
     })
-    function selectSubType() {
-        var parent = $("#Book_ParentType").val();
-        $("#Book_SubType").empty();
-        if (parent == 0 || parent=="") {
+    //function selectSubType() {
+    //    var parent = $("#Book_ParentType").val();
+    //    $("#Book_SubType").empty();
+    //    if (parent == 0 || parent=="") {
 
-            return;
-        }
-        $.ajax({
-            type: "post",
+    //        return;
+    //    }
+    //    $.ajax({
+    //        type: "post",
 
-            url: "/Book/GetSub",
-            data: { id: parent },
-            dataType:"json",
-            timeout: 30000, //超时时间：30秒
+    //        url: "/Book/GetSub",
+    //        data: { id: parent },
+    //        dataType:"json",
+    //        timeout: 30000, //超时时间：30秒
 
-            error: function (XMLHttpRequest, textStatus, errorThrown) {
-                alert("删除记录时出错了");
-            },
-            success: function (data) {
+    //        error: function (XMLHttpRequest, textStatus, errorThrown) {
+    //            alert("删除记录时出错了");
+    //        },
+    //        success: function (data) {
 
-                if (data) {
-                    $("#Book_SubType").append("<option value='0'>请选择</option>");
-                    for (var i = 0; i < data.length; i++) {
-                        $("#Book_SubType").append("<option value='" + data[i].bookTypeId + "'>" + data[i].typeName + "</option>");
-                    }
+    //            if (data) {
+    //                $("#Book_SubType").append("<option value='0'>请选择</option>");
+    //                for (var i = 0; i < data.length; i++) {
+    //                    $("#Book_SubType").append("<option value='" + data[i].bookTypeId + "'>" + data[i].typeName + "</option>");
+    //                }
 
-                }
+    //            }
 
-            }
-        });
-    }
+    //        }
+    //    });
+    //}
     </script>
 }

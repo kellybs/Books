@@ -20,6 +20,11 @@ namespace AspNetCore.Services.Impl
             bookRepository = _bookRepository;
             log = LogManager.GetLogger("NETCoreRepository", typeof(BookTypeServices));
         }
+
+        /// <summary>
+        /// 列表页
+        /// </summary>
+        /// <returns></returns>
         public BookTypeUI Query()
         {
             List<BookTypeName> list = bookTypeRepository.GetList();
@@ -34,16 +39,29 @@ namespace AspNetCore.Services.Impl
             return ui;
         }
 
+        /// <summary>
+        /// 获取所有父类
+        /// </summary>
+        /// <returns></returns>
         public List<BookTypes> GetParentList()
         {
             return bookTypeRepository.GetParentList();
         }
 
+        /// <summary>
+        /// 获取所有记录
+        /// </summary>
+        /// <returns></returns>
         public List<BookTypes> SearchAll()
         {
             return bookTypeRepository.SearchAll();
         }
 
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public ResultInfo Create(BookTypeModel model)
         {
 
@@ -87,11 +105,21 @@ namespace AspNetCore.Services.Impl
             return ri;
         }
 
+        /// <summary>
+        /// 获取单条记录
+        /// </summary>
+        /// <param name="id">主键</param>
+        /// <returns></returns>
         public BookTypes GetItem(int id)
         {
             return bookTypeRepository.GetItem(id);
         }
 
+        /// <summary>
+        /// 根据父类ID，查找子类记录
+        /// </summary>
+        /// <param name="parentId">父类ID</param>
+        /// <returns></returns>
         public List<BookTypes> GetListByParentID(int parentId)
         {
             if (parentId == 0) return null;
@@ -99,6 +127,11 @@ namespace AspNetCore.Services.Impl
             return list.Where(t => t.ParentId == parentId).ToList();
         }
 
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ResultInfo Delete(int id)
         {
             ResultInfo ri = new ResultInfo();

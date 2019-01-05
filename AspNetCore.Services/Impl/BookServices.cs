@@ -15,15 +15,23 @@ namespace AspNetCore.Services.Impl
     public class BookServices : IBookServices
     {
         private readonly IBookRepository book;
+        private readonly IPublishHouseRepository publishHouseRepository;
+        private readonly IBookTypeRepository bookTypeRepository;
         private ILog log;
-        public BookServices(IBookRepository _book)
+        public BookServices(IBookRepository _book, IPublishHouseRepository _publishHouseRepository, IBookTypeRepository bookType)
         {
             book = _book;
-            
+            publishHouseRepository = _publishHouseRepository;
+            bookTypeRepository = bookType;
+
             this.log = LogManager.GetLogger("NETCoreRepository", typeof(BookServices));            
         }
 
-
+        /// <summary>
+        /// 输入检查
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         private ResultInfo Check(BookUI model)
         {
             ResultInfo ri = new ResultInfo();
@@ -69,6 +77,11 @@ namespace AspNetCore.Services.Impl
             return ri;
         }
 
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public ResultInfo Create(BookUI model)
         {
 
@@ -98,6 +111,11 @@ namespace AspNetCore.Services.Impl
             return books;
         }
 
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ResultInfo Delete(Guid id)
         {
             ResultInfo ri = new ResultInfo();
@@ -124,18 +142,33 @@ namespace AspNetCore.Services.Impl
             return ri;
         }
 
+        /// <summary>
+        /// 查找单条记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Books GetItem(Guid id)
         {
             return book.GetItem(id);
         }
 
+        /// <summary>
+        /// 查找记录
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public PageList<BookQueryInfo> GetList(BookQuery query)
         {
             var list= book.GetList(query);
-            list.Href = $"/Book?ParentType={query.ParentType}&SubType={query.SubType}&=PublishHouseId={query.PublishHouseId}";
+          
             return list;
         }
 
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public ResultInfo Update(BookUI model)
         {
             var books = Check(model);
@@ -165,6 +198,28 @@ namespace AspNetCore.Services.Impl
             }
 
             return books;
+        }
+
+        /// <summary>
+        /// 网站首页数据源
+        /// </summary>
+        /// <param name="query">查询条件</param>
+        /// <returns></returns>
+        public HomeUI Home(BookQuery query)
+        {
+            var list = book.GetList(query);
+          
+            HomeUI home = new HomeUI() {
+                PublishHouseId=query.PublishHouseId,
+                ParentType = query.ParentType,
+                SubType = query.SubType,
+                HoustList=publishHouseRepository.GetList(),
+                Parent=bookTypeRepository.GetParentList(),
+                Children= query.ParentType>0? bookTypeRepository.GetChildList(query.ParentType):null,
+                QueryList= list
+            };
+
+            return home;
         }
     }
 }

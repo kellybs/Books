@@ -32,12 +32,12 @@
 
 @section scripts{
 
-    <script>
+<script>
 
     $(function () {
         var currentPage = @Model.PageIndex;
         var totalPages = @Model.TotalPageNum;
-        var url="@Model.Href";
+        var url="/Book?";
 		$("#page").bootstrapPaginator({
 			bootstrapMajorVersion: 3, //对应的bootstrap版本
 			currentPage: currentPage, //当前页数
@@ -45,8 +45,8 @@
 			totalPages: totalPages, //总页数
 			shouldShowPage: true, //是否显示该按钮
 			useBootstrapTooltip: true,
-			onPageClicked: function(event, originalEvent, type, page) {              
-                window.location.href = url + "&pageIndex=" + page;
+			onPageClicked: function(event, originalEvent, type, page) {
+                window.location.href = url + "pageIndex=" + page;
 			}
 		});
 
@@ -54,6 +54,6 @@
 
     })
 
-    </script>
+</script>
     <script src="~/js/bootstrap-paginator.js"></script>
 }

@@ -5,14 +5,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AspNetCoreWeb.UI.Models;
+using log4net;
+using AspNetCore.Services.Abstracts;
+using AspNetCore.Dtos;
+
 namespace AspNetCoreWeb.UI.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+
+        private readonly IBookServices book;
+        //private readonly IBookTypeServices bookTypeServices;
+        //private readonly IPublishHouseServices publishHouseServices;
+
+        private readonly ILog log;
+
+        public HomeController(IBookServices _book)
         {
-          
-            return View();
+            book = _book;
+
+            this.log = LogManager.GetLogger(Startup.repository.Name, typeof(HomeController));
+        }
+
+        public IActionResult Index(BookQuery query)
+        {
+
+            var home = book.Home(query);
+
+            return View(home);
         }
 
         public IActionResult About()

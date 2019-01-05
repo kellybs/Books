@@ -8,8 +8,14 @@ namespace AspNetCore.Entitys
         [Key]
         public int PublishHouseID { get; set; }
 
+        /// <summary>
+        /// 出版社名称
+        /// </summary>
         public string PublishName { get; set; }
 
+        /// <summary>
+        /// 是否推荐
+        /// </summary>
         public bool IsRecommend { get; set; }
     }
 }

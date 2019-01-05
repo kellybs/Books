@@ -22,6 +22,11 @@ namespace AspNetCore.Services.Impl
             log = LogManager.GetLogger("NETCoreRepository", typeof(PublishHouseServices));
         }
 
+        /// <summary>
+        /// 保存
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public ResultInfo Create(PublishHouse model)
         {
             ResultInfo ri = new ResultInfo();
@@ -47,6 +52,11 @@ namespace AspNetCore.Services.Impl
             return ri;
         }
 
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public ResultInfo Delete(int id)
         {
             ResultInfo ri = new ResultInfo();
@@ -81,16 +91,30 @@ namespace AspNetCore.Services.Impl
             return ri;
         }
 
+        /// <summary>
+        /// 获取单条记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public PublishHouse GetItem(int id)
         {
             return service.GetItem(id);
         }
 
+        /// <summary>
+        /// 获取所有记录
+        /// </summary>
+        /// <returns></returns>
         public List<PublishHouse> GetList()
         {
             return service.GetList().ToList();
         }
 
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public ResultInfo Update(PublishHouse model)
         {
             ResultInfo ri = new ResultInfo();

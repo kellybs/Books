@@ -12,6 +12,12 @@ namespace AspNet.Repository.Impl
 {
     public class BookRepository : IBookRepository
     {
+
+        /// <summary>
+        /// 根据出版社ID，查找书籍数量
+        /// </summary>
+        /// <param name="publicHouse"></param>
+        /// <returns></returns>
         public int Count(int publicHouse)
         {
             const string sql = "SELECT COUNT(*) FROM Books WHERE PublishHouseID=@PublishHouseID ";
@@ -22,6 +28,11 @@ namespace AspNet.Repository.Impl
            
         }
 
+        /// <summary>
+        /// 根据子类ID，查找书籍数量
+        /// </summary>
+        /// <param name="subTypeId"></param>
+        /// <returns></returns>
         public int CountByTypeID(int subTypeId)
         {
             const string sql = "SELECT COUNT(*) FROM Books WHERE SubType=@SubType ";
@@ -31,6 +42,11 @@ namespace AspNet.Repository.Impl
             }
         }
 
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public bool Create(Books model)
         {
             using (IDbConnection conn = DataBaseConfig.GetSqlConnection())
@@ -39,6 +55,11 @@ namespace AspNet.Repository.Impl
             }
         }
 
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public bool Delete(Books model)
         {
             using (IDbConnection conn = DataBaseConfig.GetSqlConnection())
@@ -47,6 +68,12 @@ namespace AspNet.Repository.Impl
             }
         }
 
+
+        /// <summary>
+        /// 查找单条记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public Books GetItem(Guid id)
         {
             using (IDbConnection conn = DataBaseConfig.GetSqlConnection())
@@ -56,6 +83,11 @@ namespace AspNet.Repository.Impl
             }
         }
 
+        /// <summary>
+        /// 分页信息
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
         public PageList<BookQueryInfo> GetList(BookQuery query)
         {
             var barList = new PageList<BookQueryInfo>(query.PageIndex, query.PageSize);
@@ -102,7 +134,11 @@ namespace AspNet.Repository.Impl
 
             return barList;
         }
-
+        /// <summary>
+        /// 修改
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public bool Update(Books model)
         {
             using (IDbConnection conn = DataBaseConfig.GetSqlConnection())

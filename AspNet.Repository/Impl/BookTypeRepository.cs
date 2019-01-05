@@ -12,6 +12,11 @@ namespace AspNet.Repository.Impl
     public class BookTypeRepository:IBookTypeRepository
     {  
 
+        /// <summary>
+        /// 添加
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public int Create(BookTypes model)
         {
             using (IDbConnection conn = DataBaseConfig.GetSqlConnection(null))
@@ -21,6 +26,11 @@ namespace AspNet.Repository.Impl
             }
         }
 
+        /// <summary>
+        /// 删除
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public bool Delete(BookTypes model)
         {
             using (IDbConnection conn = DataBaseConfig.GetSqlConnection(null))
@@ -29,6 +39,11 @@ namespace AspNet.Repository.Impl
             }
         }
 
+        /// <summary>
+        /// 获取某个分类下的子类
+        /// </summary>
+        /// <param name="parentId"></param>
+        /// <returns></returns>
         public List<BookTypes> GetChildList(int parentId)
         {
             const string sql = "select BookTypeId,TypeName,ParentId  from booktypes where ParentId=@ParentId ";
@@ -38,6 +53,11 @@ namespace AspNet.Repository.Impl
             }
         }
 
+        /// <summary>
+        /// 查找单条记录
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public BookTypes GetItem(int id)
         {
             using (IDbConnection conn = DataBaseConfig.GetSqlConnection(null))
@@ -47,6 +67,11 @@ namespace AspNet.Repository.Impl
             }
         }
 
+        /// <summary>
+        /// 根据名称查找分类信息
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public BookTypes GetItemByName(string name)
         {
             using (IDbConnection conn = DataBaseConfig.GetSqlConnection(null))
@@ -56,6 +81,10 @@ namespace AspNet.Repository.Impl
             }
         }
 
+        /// <summary>
+        /// 查找全部记录，包括当前信息的父类
+        /// </summary>
+        /// <returns></returns>
         public List<BookTypeName> GetList()
         {
            
@@ -67,6 +96,10 @@ namespace AspNet.Repository.Impl
             }
         }
 
+        /// <summary>
+        /// 获取所有父类
+        /// </summary>
+        /// <returns></returns>
         public List<BookTypes> GetParentList()
         {
 
@@ -78,6 +111,10 @@ namespace AspNet.Repository.Impl
             }
         }
 
+        /// <summary>
+        /// 查找全部记录
+        /// </summary>
+        /// <returns></returns>
         public List<BookTypes> SearchAll()
         {
             using (IDbConnection conn = DataBaseConfig.GetSqlConnection(null))
